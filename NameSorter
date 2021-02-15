@@ -13,16 +13,9 @@ import java.util.*;
 public class NameSorter {
 	Scanner input = new Scanner(System.in);
 	
-	/**getNameInputs takes an int parameter n and creates an array of size n. 
-	 * It then asks user to Enter n names that get stored in the array. 
-	 * It uses the helper method toTitleCase() to convert all names to Title case. 
-	 * It returns the array filled with names entered by the user.
-	 */
-	
 	//getNameInputs takes an int parameter n and creates an array of size n. 
 	String[] getNameInputs(int n) { 
 		String[] names = new String[n];
-		
 		// It then asks user to Enter n names that get stored in the array. 
 		for (int i = 0; i < n; i++) {
 			System.out.println("Enter name " + (i+1));
@@ -55,18 +48,26 @@ public class NameSorter {
 	 * it returns the position of the searchString according to the sorted list. 
 	 * If it is not found, then it returns -1.
 	 */
-	
 	int sortAndsearch(String[] strings, String searchString) {
 		// Sort array in increasing alphabetical order and print
+		if(strings == null) {return -1; }
 		Arrays.sort(strings);
-		System.out.println(Arrays.toString(strings));
-		// Search for searchString disregarding case and return position if found
-		if (strings.compareToIgnoreCase(searchString)) {
-			int position = strings.indexOf("searchString");
-			return position;
-			} else {
-			return (-1);
+		System.out.println("*** Names in sorted order ***");
+		for(int i=0; i < strings.length; i++) {
+			Arrays.toString(strings);
+			System.out.println((i+1) + ". " + strings[i]);
 		}
+		// Search for searchString disregarding case and return position if found
+		List<String> list = Arrays.asList(strings); 
+		for (String x : list) {
+			if (x.equalsIgnoreCase(searchString)) {
+				int position = list.indexOf(x);
+				return position;
+				} 
+				else {return -1;}
+		}
+	
+		return 0;
 	}
 	
 	/**DO NOT CHANGE THIS METHOD */
@@ -84,3 +85,27 @@ public class NameSorter {
 		} else System.out.println("Good Bye!");
 	}
 }
+
+//EXTRA CODE BITS
+
+//SORT AND SEARCH
+//position = list.indexOf(searchString);
+
+//list.forEach(equalsIgnoreCase);
+		
+/* strings.forEach(strings::compareToIgnoreCase(searchString));
+		Iterator<String> iterator = strings.iterator();
+		while (iterator.hasNext()) {
+			String x = iterator.next();
+			System.out.println(strings.indexOf(x));
+			return x;
+		}
+		*/
+		
+/* if (strings.compareToIgnoreCase(searchString)) {
+			int position = strings.indexOf(searchString);
+			return position;
+			} else {
+			return (-1);
+		}
+		*/
