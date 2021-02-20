@@ -1,0 +1,58 @@
+package lab2;
+import java.math.BigInteger;
+import java.util.*; //import scanner and all util packages
+
+/**Factorial class calculates factorial of a number of potentially unlimited size.
+ * It has an overloaded calcFactorial method, one with int and the other 
+ * with BigInteger as a parameter. 
+ * The main method takes user input as a number and then prints its factorial value  
+ */
+public class Factorial {
+	//DO NOT change the method signature
+	int calcFactorial(int n) {
+		//write your code here
+		if (n == 0) {
+			n=1;
+			return n;
+		} else {
+		int i,a=1;
+		int num = n; // instantiate i variable
+		for (i=1; i <= num; i++) {
+			a=a*i;
+			n = a;
+		}}
+		return n; //to be replaced with appropriate return statement
+	}
+	
+	//DO NOT change the method signature
+	BigInteger calcFactorial(BigInteger n) {
+		//write your code here
+		BigInteger a = new BigInteger("1");
+		//*** string to int???
+		//*** if n = 0...
+		for (int i = 2; i <= n; i++) {
+			a = a.multiply(BigInteger.valueOf(i));
+			return a;
+		} 
+		n = a;
+		return n; //to be replaced with appropriate return statement
+	}
+	
+	public static void main(String[] args) {
+		int n = 0;
+		Factorial factorial = new Factorial();
+		//write the console I/O statements here
+		Scanner input = new Scanner(System.in); // takes user keyboard input
+		// Int n = ns.input.nextInt();
+		n = input.nextInt();
+		System.out.println("Enter number");
+		if (n < 13) 
+			System.out.printf("Factorial of %d is %,d%n", n, factorial.calcFactorial(n) );
+		else 
+			System.out.printf("Factorial of %d is %,d%n", n, factorial.calcFactorial(BigInteger.valueOf(n)));
+	}
+}
+
+// EXTRA CODE
+// BigInteger
+// 		String x = Integer.toString(n);
